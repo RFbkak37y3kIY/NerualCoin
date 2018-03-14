@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doc API</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<style type="text/css">
+		body {
+			margin: 0;
+			padding: 0;
+			background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=ffffffff&noise=626262&density=15&opacity=15)
+		}
+		* {
+			font-family: Helvetica, arial, freesans, clean, sans-serif;
+			max-width: 1200px;
+			margin: 15px auto;
+			padding: 0 10px;
+		}
+		pre {
+			font-family: monospace;
+			padding: 5px;
+			background-color: #eee;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			overflow: auto;
+		}
+		.footer {
+			background: #ccc;
+			text-align: center;
+			padding: 2rem;
+			font-size: 2em;
+			font-weight: 700;
+			color: #fff;
+			border-radius: 0.3rem;
+			text-shadow: 0px 0px 15px #000;
+		}
+		h3 {
+			padding: 3px 35px;
+			display: inline-block;
+			background-color: #fff3e7;
+		}
+		
+		h3::before, h3::after {
+			content: '';
+			background-color: #d4aeae;
+			font-size: 71px;
+			position: absolute;
+			margin-top: -2px;
+			margin-left: -34px;
+			width: 25px;
+			height: 25px;
+			border: 0;
+			border-top-left-radius: 15px;
+			border-bottom-right-radius: 15px;
+			box-shadow: inset 8px 10px 15px #fff;
+			transform: rotate(-45deg);
+		}
+		h3::after {
+			margin-left: 9px;
+			transform: rotate(135deg);
+		}
+	</style>
+</head>
+<body>
+	<h1>Neural-Chain API</h1>
+	<h2>Documentation</h2>
+<hr />
+<h3>show documentation and other information</h3>
+<p><pre>[GET] http://localhost:9902/</pre></p>
+
+
+<hr />
+<h3>Get record from NerualChain by ID</h3>
+<p>request:<pre>[GET] http://localhost:9902/record/{record ID}</pre></p>
+<p>Example:</p>
+<p><pre>http://localhost:9902/record/2844</pre></p>
+response: 
+<p><pre>{
+  type: "send",
+  from: "4188bb7dd68f7cafcfd17c0d7649f1fcb7917472",
+  to: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+  sum: 10,
+  datatime: 1516222908332,
+  sig: "b4b4bd007e5503575200b43f062daa883cc3190e03afeed2c6121be4aaf0cc75f06c2ab1c9a390840f576cd54bbea58841d211aaf014a2a500fce4d887008713"
+}</pre></p>
+
+<hr />
+<h3>Search records from NerualChain by keywords</h3>
+<p>request:<pre>[GET] http://localhost:9902/search/{keyword1[,keyword2[,keyword3 ... ]]}</pre></p>
+<p>Example:</p>
+<p><pre>http://localhost:9902/search/wallet,031ee535a60396cefe2de9c384b45654dc269d25</pre></p>
+response: 
+<p><pre>{
+  type: "send",
+  from: "4188bb7dd68f7cafcfd17c0d7649f1fcb7917472",
+  to: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+  sum: 10,
+  datatime: 1516222908332,
+  sig: "b4b4bd007e5503575200b43f062daa883cc3190e03afeed2c6121be4aaf0cc75f06c2ab1c9a390840f576cd54bbea58841d211aaf014a2a500fce4d887008713"
+}</pre></p>
+
+
+<hr />
+<h3>Registration a new wallet account</h3>
+</p>
+<p><pre>[POST] 
+http://localhost:9902/
+</pre>
+JSON request:
+<pre>
+{
+  cm: 'reg',
+  acc_num: 'xxxxxxxx..',
+  publicKey: 'yyyyyyyyy...'
+}
+</pre></p>
+</p>
+
+<hr />
+<h3>Autorisation</h3>
+<p>request:<pre>[GET] http://localhost:9902/[account number]/auth/[signature]/</pre></p>
+<p>Example:</p>
+<p><pre>http://localhost:9902/a1c1a223f0a0c376143a900c0cde25227cbbf7c1/auth/0fd74b005a00a2b9820014e40f9f278799e1d2877e5555554b152cd2002fd8b4006061a54e6c99873c93607800f9a555634bb9aa9b56d4ea6900d21e1e331e59/</pre></p>
+
+response:
+<p><pre>{
+  cm: "auth",
+  acc_num: "a1c1a223f0a0c376143a900c0cde25227cbbf7c1",
+  signature: "0fd74b005a00a2b9820014e40f9f278799e1d2877e5555554b152cd2002fd8b4006061a54e6c99873c93607800f9a555634bb9aa9b56d4ea6900d21e1e331e59",
+  response: {
+    type: "wallet",
+    publicKey: "5ba94f0790d9b3280fc78c7650f0f0c00e11e5560ae9c8a3b9139d0b95c8ce85297d5b46b16990016e9f877ff513f672b0d26dc9e7c5ca90da7657c11c4ab9ec4bcd7800c60036148700059faf1e96a53355231e1ebbcdb31ed5e02a6f2881f2000558a5094b66e1878a0f9f78f49600bde15f990ff15bb16e3a0fd26b333c6d",
+    account_number: "a1c1a223f0a0c376143a900c0cde25227cbbf7c1",
+    certificateParrent: 1684
+  }
+}</pre></p>
+
+<hr />
+<h3>Get balance a wallet</h3>
+</p>
+<p>request:<pre>[GET] http://localhost:9902/[account number]/balance/</pre>
+Example: 
+<pre>[GET] http://localhost:9902/be26c9efd14ccd1348d0a8da61c0fa3d8fba095e/balance/</pre>
+response:
+<pre>
+{
+  cm: "balance",
+  acc_num: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+  balance: 20
+}
+</pre>
+</p>
+<hr />
+<h3>Get history transactions</h3>
+</p>
+<p><pre>[GET] http://localhost:9902/[account number]/history/</pre></p>
+<p>Example: </p>
+<p><pre>[GET] http://localhost:9902/be26c9efd14ccd1348d0a8da61c0fa3d8fba095e/history/</pre></p>
+response:
+<pre>
+{
+  cm: "history",
+  acc_num: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+  response: [
+    {
+      type: "send",
+      from: "4188bb7dd68f7cafcfd17c0d7649f1fcb7917472",
+      to: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+      sum: 10,
+      datatime: 1516222811420,
+      sig: "b464ab002aaaccd86800738150d2e6c969b4d2e6eafa556e421b7821558866c32d61cc630c652d703c0375545000f98846b188772db487814b3cd8155f00a574"
+    }, {
+      type: "send",
+      from: "4188bb7dd68f7cafcfd17c0d7649f1fcb7917472",
+      to: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+      sum: 10,
+      datatime: 1516222908332,
+      sig: "b4b4bd007e5503575200b43f062daa883cc3190e03afeed2c6121be4aaf0cc75f06c2ab1c9a390840f576cd54bbea58841d211aaf014a2a500fce4d887008713"
+    }
+  ]
+}
+</pre>
+</p>
+<hr />
+<h3>Make a transaction (send money to another account)</h3>
+</p>
+<p><pre>[POST] http://localhost:9902/</pre></p>
+request:
+<pre>
+{
+  cm: "send",
+  from: "4188bb7dd68f7cafcfd17c0d7649f1fcb7917472",
+  to: "be26c9efd14ccd1348d0a8da61c0fa3d8fba095e",
+  sum: 99910.123456789001,
+  currencyType: 'ILC'
+  datatime: 1516222908332,
+  sig: 'XXXXXXXXXXXXXXXX...'
+}
+</pre>
+</p>
+
+<div class="footer">end of page</div>
+<script type="text/javascript">document.body.innerHTML = document.body.innerHTML.replace(/http:\/\/localhost:9902/g, window.location.origin)</script>
+</body>
+</html>

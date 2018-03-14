@@ -1,0 +1,33 @@
+{
+	"system_wallet": {
+		"acc_num": "c08c4110ed55aee3625e43365f45399dec34e562",
+		"balance": 0,
+		"currencyType": "ILC",
+		"password": "bot",
+		"privat_key": "8b3ef070a8254d8175863105d8cb49236a5a001d6b04f134505034eaf08c2e0d1f24e319c4585f1ad192e3dd8eb4afcb1e4cb93b2756941ecc29bf73a23a1cdd"
+	},
+	"base_proportion": 0.000001,
+	"mining_withdrows": [
+		{
+			"taskName": "taskName01",
+			"description": "some text",
+			"mining_multiplier": 1
+		}, {
+			"taskName": "taskName02",
+			"description": "some text",
+			"mining_multiplier": 2
+		}, {
+			"taskName": "taskName03",
+			"description": "some text",
+			"mining_multiplier": 4
+		}, {
+			"taskName": "taskName04",
+			"description": "some text",
+			"mining_multiplier": 8
+		}, {
+			"taskName": "taskName05",
+			"description": "some text",
+			"mining_multiplier": 30
+		}
+	]
+}

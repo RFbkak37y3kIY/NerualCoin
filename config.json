@@ -1,0 +1,12 @@
+{
+	"host": "http://localhost",
+	"port" : {
+		"web": 8080,
+		"chain": 9901,
+		"api": 9902
+	},
+	"content": {
+		"index": "/index.html",
+		"doc": "/docs/doc-api.html"
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "wallet-nerual-chain",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduard Klimenko <edik.klimenko@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "opn": "^5.2.0",
+    "request": "^2.83.0",
+    "w3c-xmlhttprequest": "^2.1.2"
+  }
+}
