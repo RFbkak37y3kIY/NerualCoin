@@ -1,4 +1,4 @@
-NerualChain / Nerual Wallet / Crypto Curency
+NeuralChain / Neural Wallet / Crypto Currency
 ============================================
 
 #How to install
